@@ -1,4 +1,4 @@
-% Información base 		(parte 2)
+% InformaciÃ³n base 		(parte 2)
 % personaje(Nombre, Ocupacion)
 personaje(pumkin,     ladron([estacionesDeServicio, licorerias])).
 personaje(honeyBunny, ladron([licorerias, estacionesDeServicio])).
@@ -68,3 +68,16 @@ acataOrden(Jefe,Empleado):-						% Punto 5 (Mas acertado :3)
 acataOrden(Jefe,Empleado):-
   trabajaPara(Jefe,Empleado),
   Jefe\=Empleado.
+  
+sanCayetano(Alguien):-
+ tieneCerca(Alguien,_),
+ forall(tieneCerca(Alguien,Cercano),encargo(Alguien,Cercano,_)).
+ 
+tieneCerca(Alguien,Cercano):-    %hay que hacer lo mismo pero dado vuelta?
+ amigo(Alguien,Cercano).
+ 
+tieneCerca(Alguien,Cercano):-
+ trabajaPara(Alguien,Cercano).
+ 
+tieneCerca(Alguien,Cercano):-
+ trabajaPara(Cercano,Alguien).
